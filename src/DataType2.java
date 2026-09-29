@@ -62,7 +62,21 @@ public class DataType2 {
         // ArrayList<자료형> 변수명 = new ArrayList<자료형>();
         //          <Generic-자료형을고정해주는장치>
         // list3를 만듭니다. String만 들어가는 ArrayList입니다.
-        // '가위', '나무', '다람쥐' 넣고 '다리미' 로 2번방 변경,
+        ArrayList<String> list3 = new ArrayList<>(); // 생략하면 컴파일러가 자동으로 넣어줍니다.
+        // '가위', '나무', '다람쥐' 넣고
+        list3.add("가위");
+        System.out.println(list3);
+        list3.add("나비");
+        list3.add("다람쥐");
+        System.out.println(list3);
+        // '다리미' 로 2번방 변경,
+        list3.set(2, "다리미");
+        System.out.println(list3);
         // '나무'를 삭제해보세요.
+        list3.remove("나비"); // 있는 값 삭제
+        list3.remove(0); // 방번호로 삭제
+        System.out.println(list3.remove("나무")); // 없으면 false 리턴하고 정상 동작
+        // list3.remove(3);
+        System.out.println(list3);
     }
 }
