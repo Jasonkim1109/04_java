@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 // 참조 자료형
@@ -27,7 +28,41 @@ public class DataType2 {
         arr2[0] = "가위";
         arr2[1] = "나비";
         arr2[2] = "다람쥐";
+        // arr2[3] = "라디오";
         System.out.println(Arrays.toString(arr2));
         System.out.println(arr2[2]);
+
+        // Array(배열, 방을 나눠서 각 값을 저장하는 참조자료형)을
+        // List(값을 순서대로 담는 자료구조, 같은 값을 여러번 담을 수 있습니다, 가변 가능)
+
+        // Integer는 int 라는 방 안에 바로 값이 들어있는 기본자료형을
+        // String 같은 참조자료형처럼 감싸주는 wrapper class 라고 부릅니다.
+        //int[] arr2 = new int[3];
+        ArrayList<Integer> list1 = new ArrayList<Integer>();
+        System.out.println(list1);
+        // list1[0] = 1; -> 직접 접근 불가
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        System.out.println(list1.get(1)); // 방번호로 조회
+        // System.out.println(list1.get(-1)); // 음수 인덱싱, 넘치는 방 조회
+        System.out.println(list1);
+
+        // ArrayList<자료형> 변수명 = new ArrayList<자료형>();
+        //          <Generic-자료형을고정해주는장치>
+        ArrayList list2 = new ArrayList();
+        list2.add(3.14);
+        list2.add(true);
+        list2.add(0);
+        list2.add("다람쥐");
+        System.out.println(list2);
+        // list1.add("가위");
+
+        // Create-add / Read-get / Update / Delete
+        // ArrayList<자료형> 변수명 = new ArrayList<자료형>();
+        //          <Generic-자료형을고정해주는장치>
+        // list3를 만듭니다. String만 들어가는 ArrayList입니다.
+        // '가위', '나무', '다람쥐' 넣고 '다리미' 로 2번방 변경,
+        // '나무'를 삭제해보세요.
     }
 }
