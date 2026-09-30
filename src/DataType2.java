@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 // 참조 자료형
 public class DataType2 {
@@ -7,6 +8,7 @@ public class DataType2 {
     public static void main(String[] args) {
         // [ ]: Array 방 크기를 고정해놓고 사용하는 참조자료형
         int a = 1;
+        System.out.println(a);
 
         // 1. 선언 및 할당(대입) true, false, true
          int[] arr1 = {1, 2, (int)3.14}; // 실수->정수 형변환은 자동으로 안됨
@@ -28,7 +30,7 @@ public class DataType2 {
         arr2[0] = "가위";
         arr2[1] = "나비";
         arr2[2] = "다람쥐";
-        // arr2[3] = "라디오";
+       // arr2[3] = "라디오";
         System.out.println(Arrays.toString(arr2));
         System.out.println(arr2[2]);
 
@@ -37,7 +39,7 @@ public class DataType2 {
 
         // Integer는 int 라는 방 안에 바로 값이 들어있는 기본자료형을
         // String 같은 참조자료형처럼 감싸주는 wrapper class 라고 부릅니다.
-        //int[] arr2 = new int[3];
+        // int[] arr2 = new int[3];
         ArrayList<Integer> list1 = new ArrayList<Integer>();
         System.out.println(list1);
         // list1[0] = 1; -> 직접 접근 불가
@@ -78,5 +80,10 @@ public class DataType2 {
         System.out.println(list3.remove("나무")); // 없으면 false 리턴하고 정상 동작
         // list3.remove(3);
         System.out.println(list3);
+
+        List<String> list4 = new ArrayList<>();
+        list4.add("감나무");
+        System.out.println(list4);
+
     }
 }
