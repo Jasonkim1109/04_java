@@ -38,6 +38,7 @@ public class FlowControl1 {
         }
 
         // switch ~ case 구문
+        // 딱 정해진 결과가 나오는 경우
         // switch (판별조건) {
         //    case 케이스1:
         //              실행문;
@@ -50,7 +51,36 @@ public class FlowControl1 {
         //              break; // 마지막줄인 경우에는 생략 가능
         // }
 
+        num = -3;
+
+        switch (Integer.compare(num, 0)) {
+            case 1:
+                System.out.println("양수입니다");
+                break;
+            case -1:
+                System.out.println("음수입니다"); // 실행문1
+                System.out.println(num); // 실행문2
+                break;
+            default:
+                System.out.println("0입니다");
+                // break;  //  마지막줄이므로 생략 가능
+        }
+
+        // 화살표(->)로 : 과 break를 생략
+        switch (Integer.compare(num, 0)) {
+            case 1 -> System.out.println("양수입니다");
+            case -1 -> {    // 실행문이 여러줄일 때는 { }을 구분해서 넣어줍니다.
+                System.out.println("음수입니다");
+                System.out.println(num);
+            }
+            default -> System.out.println("0입니다");
+        }
+
         // 삼항연산자    식 ? 참 : 거짓
+        System.out.println((num == 0) ? "0입니다" : "0이 아닙니다");
+
+        // 너무 깊어지면 헷갈리니까 2개 정도 이상이 되면 if / switch로 변경
+        System.out.println((num == 0) ? "0입니다" : (num > 0) ? "양수입니다" : "음수입니다" );
     }
 
     // 접근제어자 함수의메모리위치 리턴타입 함수명(입력받을자료형 공갈문자명)
