@@ -121,6 +121,7 @@ public class FlowControl4 {
         System.out.println(scores.entrySet());
         System.out.println(scores.keySet());
         System.out.println(scores.values());
+
         // for (초기값; 조건식; 증감식) 은 방번호가 없으므로 사용 불가
         // for ~ each
         for (String key: scores.keySet()) {
