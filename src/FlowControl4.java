@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FlowControl4 {
 
@@ -81,6 +83,52 @@ public class FlowControl4 {
         // 방 번호를 경유하지 않고 값 자체로 사용하기 때문에 일괄적인 작업에 주로 사용
         for (String item: cheeseList) {
             System.out.println(item + "먹고 싶다");
+        }
+
+        // 문자열은 메모리주소를 경유하는 집합자료형이기 때문에 == 은 메모리주소, .equals(값)로 비교
+        // 문자열은 메모리를 얼마나 차지할지 모르니까 String Pool이라는 특별한 공간에 저장합니다.
+        System.out.println("============= [break] 완전 종료 ==================");
+        String hates = new String("gouda"); // 변수에 gouda 라는 값이 저장되어있음
+        // 5. break -> 현재 반복문 전체를 종료
+        for (String item: cheeseList) {
+            // gouda 를 만나는 순간 반복 종료 - if
+            if (item.equals(hates)) { // 문자열에 대해서는 .equals(_)로 값 자체를 비교하는 방식으로 습관
+                break;
+            }
+
+            System.out.println(item + "먹고 싶다");
+        }
+
+        System.out.println("============= [continue] 한번만 넘어감 ==================");
+        // 6. continue -> 현재 반복만 건너뛰고 다음 반복을 진행
+        for (String item: cheeseList) {
+
+            // gouda 만 빼고 나머지만 먹고 싶다 - continue는 아래 작성된 코드를 한 번만 무시
+            if (item.equals(hates)) { // 문자열에 대해서는 .equals(_)로 값 자체를 비교하는 방식으로 습관
+                continue;
+            }
+
+            System.out.println(item + "먹고 싶다");
+
+        }
+
+        // 7. Map: key와 value를 한 쌍으로 저장
+        System.out.println("============= [Map] =========== ");
+        Map<String, Double> scores = new HashMap<>();
+        scores.put("짱구", 80.0);
+        scores.put("훈이", 70.0);
+        System.out.println(scores);
+        System.out.println(scores.entrySet());
+        System.out.println(scores.keySet());
+        System.out.println(scores.values());
+        // for (초기값; 조건식; 증감식) 은 방번호가 없으므로 사용 불가
+        // for ~ each
+        for (String key: scores.keySet()) {
+            System.out.println(key + " " + scores.get(key));
+        }
+
+        for (Map.Entry<String, Double> entry: scores.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
         }
 
 
