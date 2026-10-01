@@ -11,9 +11,11 @@ public class Main {
 
         System.out.println(kim.name);
 
-        Student shin = new Student();
+        AStudent shin = new AStudent();
         shin.name ="신짱구";
         shin.enter();
         System.out.println(shin.name);
+        System.out.println(AStudent.totalStudentNo);
+        System.out.println(AStudent.getTotalStudentNo());
     }
 }
