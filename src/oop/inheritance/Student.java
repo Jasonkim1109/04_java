@@ -13,6 +13,20 @@ public class Student {
     String name; // 수강생 이름
     String className; // 수강반명
 
+    // 생성자 함수를 오버로딩(같은 함수명을 다양한 방식으로 사용)
+    Student(){
+    }
+
+    Student(String newName){
+        this.name = newName;
+    }
+
+    // 생성자 함수를 오버라이딩
+    Student(String newName, String newClassName){
+        this.name = newName;
+        this.className = newClassName;
+    }
+
     // 클래스 메서드도 static 키워드로 선언 Student.메서드명();
     static int getTotalStudentNo() {
         return totalStudentNo;

@@ -1,6 +1,8 @@
 package oop.inheritance;
 
 // Student를 상속받은 자식클래스 AStudent
+// 생성자함수에 무조건 이름, 반, team이름을 함께 받도록 하나 생성자 함수를 만들어 주시고
+// shin.introduce(); -> "신짱구 / A반 / 이름없조" 인스턴스 메서드를 A반에만 만들어주세요
 public class AStudent extends Student {
 
     // 우리반의 정원은 27명입니다.
