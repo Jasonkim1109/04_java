@@ -20,6 +20,6 @@ public class Student {
 
     // 인스턴스 메서드
     void enter(){ // this.로 각 인스턴스의 메모리 주소를 부릅니다.
-        System.out.println("9시에 "+this.name+"이 입실합니다.");
+        System.out.println(this.name+"이 입실합니다.");
     }
 }

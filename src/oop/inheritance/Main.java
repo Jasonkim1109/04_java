@@ -14,8 +14,9 @@ public class Main {
         AStudent shin = new AStudent();
         shin.name ="신짱구";
         shin.enter();
+        shin.enter("11시");
         System.out.println(shin.name);
-        System.out.println(AStudent.totalStudentNo);
-        System.out.println(AStudent.getTotalStudentNo());
+        System.out.println(AStudent.totalStudentNo); // 클래스변수 오버라이드
+        System.out.println(AStudent.getTotalStudentNo()); // 클래스메서드 오버라이드
     }
 }
