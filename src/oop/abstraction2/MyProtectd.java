@@ -14,8 +14,8 @@ public class MyProtectd {
     }
 
     protected String msg = "protected 인스턴스 변수";
-    protected void print() {
-        System.out.println("protected 인스턴스 메서드를 통해 출력 ");
+    public void print() {
+        System.out.println("public 인스턴스 메서드를 통해 protected 변수를 출력 ");
         System.out.println(this.msg);
     }
 }

@@ -22,7 +22,7 @@ public class Main {
         MyMyPublic myPublic2 = new MyMyPublic();
         MyMyPublic.pprint(); // 클래스 메서드
         // System.out.println(MyMyPublic.hello); // 클래스 변수
-         myPublic2.print(); // 인스턴스 메서드
+         myPublic2.print(); // 인스턴스 메서드를 통해 외부 패키지의 protected 변수에 있는 값을 확인
         // System.out.println(myPublic2.msg); // 인스턴스 변수
 
         System.out.println("myProtected =================== ");
