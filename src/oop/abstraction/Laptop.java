@@ -12,4 +12,6 @@ public class Laptop extends Computer {
         this.power = "off";
         System.out.println("키보드 모서리에 있는 전원을 " + this.power + "합니다.");
     }
+
+
 }

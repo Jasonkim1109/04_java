@@ -27,4 +27,5 @@ public class Desktop implements Computer {
         this.power = "off";
         System.out.println("본체에 딸린 전원을 " + this.power + "했습니다");
     }
+
 }
