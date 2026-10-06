@@ -1,4 +1,4 @@
-package oop.capsulation; // package 끼리 공유 가능
+package oop.abstraction2; // package 끼리 공유 가능
 
 // 클래스 변수, 클래스 메서드
 // 인스턴스 변수, 인스턴스 메서드
