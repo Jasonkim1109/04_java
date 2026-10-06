@@ -25,6 +25,7 @@ public interface Computer {
 
     // 순서를 정의하는 템플릿 메서드
     // 접근제어자 default 사용시 구상메서드 작성 가능
+    // 자기 클래스, 자기 패키지 안에서만 공유가 허용
     default void run() {
        powerOn();
        login();
