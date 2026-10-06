@@ -39,5 +39,10 @@ public class Main {
         MyDefault myDefault = new MyDefault(); // 클래스가 default이므로 외부 패키지에서 접근 불가
         // System.out.println(myDefault.msg);
         myDefault.print();
+
+        MyPrivate myPrivate = new MyPrivate();
+        // private 변수와 private 메서드 모두 확인 불가
+        myPrivate.pprint();
+
     }
 }
