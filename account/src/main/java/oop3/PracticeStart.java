@@ -18,22 +18,28 @@ public class Practice1Before {
             new Account("1002-345-998877", "적금", 497_000L, "휴면"));
 
     static Optional<Account> findAccount(String accountNo) {
-        try (FakeConnection conn = new FakeConnection()) {
-            conn.query("SELECT * FROM account WHERE account_no = ?");
-            for (Account a : ACCOUNTS) {
-                if (a.accountNo().equals(accountNo)) {
-                    return Optional.of(a);
-                }
+        FakeConnection conn = new FakeConnection();                  // (가)
+        conn.query("SELECT * FROM account WHERE account_no = ?");
+        for (Account a : ACCOUNTS) {
+            if (a.accountNo().equals(accountNo)) {
+                return Optional.of(a);
             }
-            return Optional.empty();
         }
+        conn.close();
+        return Optional.empty();  // Optional 로 null 여부를 옵션화할 수 있는 wrapper class로 넘겨줍니다.                                                 // (나)
     }
 
-//    static boolean withdraw(Optional<Account> a, long amount) {
-//        if (a.status().equals("지급정지")) return false;              // (다)
-//        if (a.balance() < amount) return false;                      // (다)
-//        return true;
-//    }
+    static boolean withdraw(Account a, long amount) {
+        if (a.status().equals("지급정지")) {
+            // throw 키워드로 커스텀예외를 특정 상황에 일부러 발생시킬 수 있다.
+            throw new AccountFrozenException( "지급 정지 계좌라서 인출이 불가합니다");
+        };              // (다) AccountFrozenException
+        if (a.balance() < amount)
+        {
+            throw new InsufficientBalanceException( "계좌의 출금 가능 금액보다 이체하려는 금액이 커서 불가합니다");
+        };    // (다) InsufficientBalanceException
+        return true;
+    }
 
     public static void main(String[] args) {
         Optional<Account> a = findAccount("1002-345-678901");
@@ -45,25 +51,47 @@ public class Practice1Before {
 
         System.out.println(findAccount("1002-345-678901").isPresent()); // 있는 계좌
         System.out.println(findAccount("9999-000-000000").isEmpty()); // 없는 계좌
-//        System.out.println("없는 계좌 잔액: " + none.balance());
+        //   System.out.println("없는 계좌 잔액: " + none.balance());
     }
 }
+
+// 기록 (데이터를 빠르게 실어나르기 위한 자바의 새로운 클래스 문법
+// a.accountNo()  이렇게 메서드를 자동으로 만들어줘서 get을 수행할 수 있다.
+// 한번 넣은 값을 수정 불가
+record Account(String accountNo, String accountType, long balance, String status) { }
+
+class FakeConnection implements AutoCloseable {
+    FakeConnection() { System.out.println("  연결 열림"); }
+
+    void query(String sql)
+    { System.out.println("  쿼리 실행"); }
+
+    @Override
+    public void close()
+    { System.out.println("  연결 닫힘"); }
+}
+
 // 커스텀 예외: 실제 자바에는 존재하지 않고, 우리의 도메인에 맞는 특정 상황을 위해 작성
 // 없는 계좌
 class AccountNotFoundException extends RuntimeException {
     AccountNotFoundException(String message) {
         super(message);
+        // 계좌 생성 화면으로 돌림
     }
 }
+
 // status가 지급정지
 class AccountFrozenException extends RuntimeException {
     AccountFrozenException(String message) {
         super(message);
+        // 지급정지를 풀기 위한 페이지로 안내
     }
 }
-// 출금금액보다 계좌의 금액이 적을때
+
+// 출금금액보다 계좌의 금액이 적을 때
 class InsufficientBalanceException extends RuntimeException {
     InsufficientBalanceException(String message) {
         super(message);
+        // 전체 계좌 페이지로 돌아가게 한다
     }
 }
